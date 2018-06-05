@@ -30,6 +30,11 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 
 	private float m_walkTimeStart = 0.0f;    // 歩き始める速度
 
+	// ユーザーの入力による値
+	private float m_userVertical; // 縦方向の入力
+	private float m_userHorizontal; // 水平方向の入力
+	private bool  m_userJump; // ジャンプ入力
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -39,6 +44,16 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 		m_controller = GetComponent<CharacterController>();
 		// キャラの移動方向をキャラの向いている方向にセットする
 		m_moveDirection = transform.TransformDirection(Vector3.forward);
+	}
+
+	/// <summary>
+	/// ユーザーの操作をメンバ変数に反映する
+	/// </summary>
+	public void SetUserControl(float v, float h, bool jump)
+	{
+		m_userVertical = v;
+		m_userHorizontal = h;
+		m_userJump = jump;
 	}
 
 	// Update is called once per frame
@@ -55,10 +70,10 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 		// 右方向ベクターは常にforwardに直交
 		Vector3 right = new Vector3(forward.z, 0, -forward.x);
 
-		float v = Input.GetAxisRaw("Vertical"); // マウスもしくはコントローラスティックの垂直方向の値
-		float h = Input.GetAxisRaw("Horizontal");   // マウスもしくはコントローラスティックの水平方向の値
+		float v = m_userVertical;//Input.GetAxisRaw("Vertical"); // マウスもしくはコントローラスティックの垂直方向の値
+		float h = m_userHorizontal;//Input.GetAxisRaw("Horizontal");   // マウスもしくはコントローラスティックの水平方向の値
 
-		bool jump = Input.GetButtonDown("Jump"); // キーボードもしくはコントローラのJumpの値
+		bool jump = m_userJump;// Input.GetButtonDown("Jump"); // キーボードもしくはコントローラのJumpの値
 
 		// カメラと連動した進行方向を計算：視点の向きが前方方向
 		Vector3 targetDirection = h * right + v * forward;
