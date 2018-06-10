@@ -33,10 +33,10 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 	// ユーザーの入力による値
 	private float m_userVertical; // 縦方向の入力
 	private float m_userHorizontal; // 水平方向の入力
-	private bool  m_userJump; // ジャンプ入力
+	private bool m_userJump; // ジャンプ入力
 
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
 		// Animator コンポーネントを取得
 		m_animator = GetComponent<Animator>();
@@ -111,7 +111,7 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 			{
 				targetSpeed *= m_walkSpeed;
 			}
-			
+
 			// Animatorの現在再生中のステートがTopToGroundか？
 			if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("TopToGround"))
 			{
@@ -137,7 +137,7 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 			}
 
 			// ジャンプボタンが押されたか？
-			if (jump 
+			if (jump
 				&& m_animator.GetCurrentAnimatorStateInfo(0).IsName("walkrun")
 				&& !m_animator.IsInTransition(0))
 			{
@@ -157,6 +157,18 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 		{
 			// 宙に浮いている場合
 			Debug.Log("宙に浮いている");
+			if (targetDirection != Vector3.zero) // キャラは順方向を向いていないか？：つまり回頭している場合
+			{
+				if (m_moveSpeed < m_walkSpeed * 0.9) // ゆっくり移動しているか
+				{
+					m_moveDirection = targetDirection.normalized; // 止まっているときは即時ターン
+				}
+				else  // 移動しているときはスムースにターン
+				{
+					m_moveDirection = Vector3.RotateTowards(m_moveDirection, targetDirection, m_rotateSpeed * Mathf.Deg2Rad * Time.deltaTime, 1000);
+					m_moveDirection = m_moveDirection.normalized;
+				}
+			}
 			// 重力を適応
 			m_verticalSpeed -= m_gravity * Time.deltaTime;
 			if (m_verticalSpeed < -1.0)   // 落ちる速度が一定を超えたら
@@ -172,13 +184,8 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 		// キャラを移動をキャラクターコントローラに伝える
 		m_collisionFlags = m_controller.Move(m_movement);
 
-		// 宙に浮いていない場合
-		//if ((m_collisionFlags & CollisionFlags.CollidedBelow) != 0)
-		if (m_controller.isGrounded || isGrounded)
-		{
-			// 移動方向に回頭：浮いていると回頭しない
-			transform.rotation = Quaternion.LookRotation(m_moveDirection);
-		}
+		// 移動方向に回頭：浮いていると回頭しない
+		transform.rotation = Quaternion.LookRotation(m_moveDirection);
 	}
 
 	/// <summary>
@@ -201,5 +208,19 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 	public void OnCallChangeFace(string str)
 	{
 
+	}
+
+	/// <summary>
+	/// Characterontrollerの当たり判定用処理
+	/// </summary>
+	/// <param name="hit"></param>
+	void OnControllerColliderHit(ControllerColliderHit hit)
+	{
+		// hit.gameObjectで衝突したオブジェクト情報が得られる
+		if (hit.gameObject.tag == "Stage" || hit.gameObject.tag == "MoveStage")
+		{
+			// 親のPlayerオブジェクトごと、接地したオブジェクトの子にする
+			transform.parent.gameObject.transform.SetParent(hit.transform);
+		}
 	}
 }

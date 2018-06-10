@@ -59,19 +59,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\MobileControlRig.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
-    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
+    <Compile Include="Assets\Plugins\LeanTween\LeanAudio.cs" />
+    <Compile Include="Assets\Plugins\LeanTween\LeanTest.cs" />
+    <Compile Include="Assets\Plugins\LeanTween\LeanTween.cs" />
+    <Compile Include="Assets\Plugins\LeanTween\LTDescr.cs" />
+    <Compile Include="Assets\Plugins\LeanTween\LTDescrOptional.cs" />
+    <Compile Include="Assets\Plugins\LeanTween\LTSeq.cs" />
     <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
-    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <Reference Include="Cinemachine">
       <HintPath>D:/Unity/Projects/WorkingGroupD/ThirdPersonGame/ThirdPersonGame_git/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
@@ -278,6 +272,18 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity2018_1_f2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>D:/Unity/Projects/WorkingGroupD/ThirdPersonGame/ThirdPersonGame_git/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>D:/Unity/Projects/WorkingGroupD/ThirdPersonGame/ThirdPersonGame_git/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>D:/Unity/Projects/WorkingGroupD/ThirdPersonGame/ThirdPersonGame_git/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>D:/Unity/Projects/WorkingGroupD/ThirdPersonGame/ThirdPersonGame_git/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/kazutaka/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>

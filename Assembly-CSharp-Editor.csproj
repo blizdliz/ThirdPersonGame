@@ -334,6 +334,21 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity2018_1_f2/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>D:/Unity/Projects/WorkingGroupD/ThirdPersonGame/ThirdPersonGame_git/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>D:/Unity/Projects/WorkingGroupD/ThirdPersonGame/ThirdPersonGame_git/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>D:/Unity/Projects/WorkingGroupD/ThirdPersonGame/ThirdPersonGame_git/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>D:/Unity/Projects/WorkingGroupD/ThirdPersonGame/ThirdPersonGame_git/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>D:/Unity/Projects/WorkingGroupD/ThirdPersonGame/ThirdPersonGame_git/Assets/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/kazutaka/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -405,6 +420,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{58CC2D7B-FDD6-AC43-0A7B-5D934EAB1F7A}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{3258C087-E53A-13C1-C713-49C9729C9CB2}</Project>
       <Name>Assembly-CSharp</Name>
