@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Girigiri_git", "Assembly-CSharp.csproj", "{0BA771B3-0841-B248-0C1C-F561211AF206}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Girigiri_git", "Assembly-CSharp-firstpass.csproj", "{A62584B9-4366-C9C3-9CD6-A173862170AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Girigiri_git", "Assembly-CSharp-Editor.csproj", "{1F209028-5219-CFF1-9710-BBBBB633AE1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BA771B3-0841-B248-0C1C-F561211AF206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BA771B3-0841-B248-0C1C-F561211AF206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BA771B3-0841-B248-0C1C-F561211AF206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BA771B3-0841-B248-0C1C-F561211AF206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A62584B9-4366-C9C3-9CD6-A173862170AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A62584B9-4366-C9C3-9CD6-A173862170AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A62584B9-4366-C9C3-9CD6-A173862170AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A62584B9-4366-C9C3-9CD6-A173862170AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F209028-5219-CFF1-9710-BBBBB633AE1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F209028-5219-CFF1-9710-BBBBB633AE1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F209028-5219-CFF1-9710-BBBBB633AE1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F209028-5219-CFF1-9710-BBBBB633AE1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
