@@ -35,9 +35,13 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 	private float m_userHorizontal; // 水平方向の入力
 	private bool m_userJump; // ジャンプ入力
 
+	private RaycastHit m_hit;
+	private GameObject m_parentObj;
+
 	// Use this for initialization
 	void Start()
 	{
+		m_hit = new RaycastHit();
 		// Animator コンポーネントを取得
 		m_animator = GetComponent<Animator>();
 		// CharacterController コンポーネントを取得
@@ -157,6 +161,7 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 		{
 			// 宙に浮いている場合
 			Debug.Log("宙に浮いている");
+
 			if (targetDirection != Vector3.zero) // キャラは順方向を向いていないか？：つまり回頭している場合
 			{
 				if (m_moveSpeed < m_walkSpeed * 0.9) // ゆっくり移動しているか
@@ -195,8 +200,11 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 	{
 		if (m_controller.isGrounded) { return true; }
 		//　CharacterControllerのコライダで接地が確認出来ない場合
-		if (Physics.Linecast(this.transform.position, (this.transform.position - transform.up * 0.1f)))
+		if (Physics.Linecast(this.transform.position, (this.transform.position - transform.up * 0.1f), out m_hit))
 		{
+			m_parentObj = m_hit.collider.gameObject;
+			// 親のPlayerオブジェクトごと、接地したオブジェクトの子にする
+			transform.parent.gameObject.transform.SetParent(m_parentObj.transform);
 			return true;
 		}
 		else

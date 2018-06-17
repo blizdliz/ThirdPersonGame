@@ -121,6 +121,7 @@
     <None Include="Assets\ResourcesOther\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
     <None Include="Assets\ResourcesOther\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
     <None Include="Assets\ResourcesOther\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
+    <None Include="Assets\ResourcesOther\Cartoon Temple Building Kit\ReadMe.txt" />
     <None Include="Assets\ResourcesOther\VictorsAssets\TouchControlsKit-Lite\TCK_Changelog.txt" />
     <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
