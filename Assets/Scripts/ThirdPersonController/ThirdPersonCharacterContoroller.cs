@@ -35,6 +35,8 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 	private float m_userHorizontal; // 水平方向の入力
 	private bool m_userJump; // ジャンプ入力
 
+	[SerializeField]
+	private Transform m_raycastStartTransform;
 	private RaycastHit m_hit;
 	private GameObject m_parentObj;
 
@@ -151,11 +153,6 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 				// 垂直方向の速度を設定
 				m_verticalSpeed = m_jumpSpeed;
 			}
-			else
-			{
-				// 垂直方向の速度をゼロに設定
-				m_verticalSpeed = 0.0f;
-			}
 		}
 		else
 		{
@@ -182,7 +179,7 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 				m_animator.SetBool("fall", true);
 			}
 		}
-
+		Debug.Log("m_verticalSpeed:" + m_verticalSpeed);
 		// キャラの移動量を計算
 		m_movement = m_moveDirection * m_moveSpeed + new Vector3(0, m_verticalSpeed, 0);
 		m_movement *= Time.deltaTime;
@@ -200,7 +197,7 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 	{
 		if (m_controller.isGrounded) { return true; }
 		//　CharacterControllerのコライダで接地が確認出来ない場合
-		if (Physics.Linecast(this.transform.position, (this.transform.position - transform.up * 0.1f), out m_hit))
+		if (Physics.Linecast(m_raycastStartTransform.position, (m_raycastStartTransform.position - transform.up * 0.5f), out m_hit))
 		{
 			m_parentObj = m_hit.collider.gameObject;
 			// 親のPlayerオブジェクトごと、接地したオブジェクトの子にする
