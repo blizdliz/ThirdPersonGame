@@ -28,24 +28,27 @@ public class Scene_Main_UserController : SingletonMonoBehaviour<Scene_Main_UserC
 		float v = 0;
 		float h = 0;
 		bool jump = false;
+		bool crouch = false;
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 		v = Input.GetAxisRaw("Vertical"); // マウスもしくはコントローラスティックの垂直方向の値
 		h = Input.GetAxisRaw("Horizontal");   // マウスもしくはコントローラスティックの水平方向の値
 
 		jump = Input.GetButtonDown("Jump"); // キーボードもしくはコントローラのJumpの値
+		crouch = Input.GetButtonDown("Action3"); // キーボードもしくはコントローラのCrouchの値
 
 #elif UNITY_ANDROID
 		v = TCKInput.GetAxis("Joystick").y; // Joystickの垂直方向の値
 		h = TCKInput.GetAxis("Joystick").x; // Joystickの水平方向の値
 
 		jump = TCKInput.GetAction("JumpButton", EActionEvent.Down); // ジャンプボタンの値
+		crouch = false;  // しゃがみボタンの値
 
 		Vector2 look = TCKInput.GetAxis("Touchpad");
 		m_freeLookCam.m_YAxis.Value += look.y * 0.01f;
 		m_freeLookCam.m_XAxis.Value += look.x * 10f;
 #endif
 
-		m_thirdPersonController.SetUserControl(v, h, jump);
+		m_thirdPersonController.SetUserControl(v, h, jump, crouch);
 	}
 }

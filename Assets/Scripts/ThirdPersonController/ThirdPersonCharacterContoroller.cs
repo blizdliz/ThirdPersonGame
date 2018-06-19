@@ -34,6 +34,7 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 	private float m_userVertical; // 縦方向の入力
 	private float m_userHorizontal; // 水平方向の入力
 	private bool m_userJump; // ジャンプ入力
+	private bool m_userCrouch; // しゃがみ入力
 
 	[SerializeField]
 	private Transform m_raycastStartTransform;
@@ -55,11 +56,12 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 	/// <summary>
 	/// ユーザーの操作をメンバ変数に反映する
 	/// </summary>
-	public void SetUserControl(float v, float h, bool jump)
+	public void SetUserControl(float v, float h, bool jump, bool crouch)
 	{
 		m_userVertical = v;
 		m_userHorizontal = h;
 		m_userJump = jump;
+		m_userCrouch = crouch;
 	}
 
 	// Update is called once per frame
@@ -80,6 +82,7 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 		float h = m_userHorizontal;//Input.GetAxisRaw("Horizontal");   // マウスもしくはコントローラスティックの水平方向の値
 
 		bool jump = m_userJump;// Input.GetButtonDown("Jump"); // キーボードもしくはコントローラのJumpの値
+		bool crouch = m_userCrouch; // キーボードもしくはコントローラのCrouchの値
 
 		// カメラと連動した進行方向を計算：視点の向きが前方方向
 		Vector3 targetDirection = h * right + v * forward;
@@ -119,7 +122,8 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 			}
 
 			// Animatorの現在再生中のステートがTopToGroundか？
-			if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("TopToGround"))
+			if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("TopToGround")
+				|| m_animator.GetCurrentAnimatorStateInfo(0).IsName("Crouch"))
 			{
 				// 移動速度を0に設定
 				m_moveSpeed = 0;
@@ -152,6 +156,17 @@ public class ThirdPersonCharacterContoroller : MonoBehaviour
 				m_animator.SetTrigger("jump");
 				// 垂直方向の速度を設定
 				m_verticalSpeed = m_jumpSpeed;
+			}
+			// しゃがみボタンが押されたか？
+			if (crouch 
+				&& m_animator.GetCurrentAnimatorStateInfo(0).IsName("walkrun")
+				&& !m_animator.IsInTransition(0))
+			{
+				Debug.Log("Crouch");
+				// AnimatorのcrouchのトリガーをONにする
+				m_animator.SetTrigger("crouch");
+				// 移動速度を0に設定
+				m_moveSpeed = 0;
 			}
 		}
 		else
