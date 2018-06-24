@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\common\unity\Singleton\SingletonMonoBehaviour.cs" />
     <Compile Include="Assets\Scripts\common\unity\util\Screenshot.cs" />
     <Compile Include="Assets\Scripts\common\unity\util\UUID.cs" />
+    <Compile Include="Assets\Scripts\Scene_Main\FireComponent\FireComponent.cs" />
     <Compile Include="Assets\Scripts\Scene_Main\JoystickManager.cs" />
     <Compile Include="Assets\Scripts\Scene_Main\Scene_Main_UserController.cs" />
     <Compile Include="Assets\Scripts\Scene_Title\Scene_Title_GUIManager.cs" />
